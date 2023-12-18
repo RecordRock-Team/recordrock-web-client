@@ -1,27 +1,26 @@
 <template>
   <div>
-    <button type="button">수정</button><!-- 수정 클릭 시 수정 컴포넌트 보여 짐 -->
+    <span style="color:red">수정 컴포넌트</span> <!-- default 숨김 상태 -->
     <!-- 방문 장소 및 횟수 -->
     <div class="place">
       <strong>누적방문</strong>
       <div class="place-box">
-        <ul>
+        <div class="search-places">
+          <input type="search" title="암장 검색" placeholder="암장 이름을 입력해주세요">
+          <button type="button">search</button>
+        </div>
+
+        <ul class="search-list">
           <li>
             <div class="">
               <span>logo</span>
               <span>피커스 종로</span>
-            </div>
-            <div class="count">
-              <span>3</span>회
             </div>
           </li>
           <li>
             <div class="">
               <span>logo</span>
               <span>담장</span>
-            </div>
-            <div class="count">
-              <span>3</span>회
             </div>
           </li>
         </ul>
@@ -33,8 +32,8 @@
     <div class="time">
       <strong>운동 시간</strong>
       <div class="time-box">
-        <span>1</span> 시간
-        <span>54</span> 분
+        <input type="number" id="hour"> <label for="hour">시간</label>
+        <input type="number" id="minute"> <label for="minute">분</label>
       </div>
     </div>
     <!--// 운동 시간 -->
@@ -43,12 +42,23 @@
     <div class="difficulty">
       <strong>난이도</strong>
       <div class="difficulty-box">
-        <ul>
-          <li> <span style="background-color:#ff6600">ㅇ</span> 3</li>
-          <li> <span style="background-color:#ff6600">ㅇ</span> 2</li>
-          <li> <span style="background-color:#ff6600">ㅇ</span> 1</li>
-          <li> <span style="background-color:#ff6600">ㅇ</span> 4</li>
-        </ul>
+        <div class="difficulty-unit">
+          <span class="grade">
+            <input type="color">
+          </span>
+          <span class="count">
+            <input type="number">
+          </span>
+        </div>
+
+        <div class="difficulty-unit">
+          <span class="grade">
+            <input type="color">
+          </span>
+          <span class="count">
+            <input type="number">
+          </span>
+        </div>
       </div>
     </div>
     <!--// 난이도 -->
@@ -57,11 +67,11 @@
     <div class="note">
       <strong>메모</strong>
       <div class="note-box">
-        <p>아무생각없음</p>
+        <textarea name="" id="" cols="30" rows="10"></textarea>
       </div>
     </div>
     <!--// 메모 -->
-
+    <button type="submit">저장</button>
   </div>
 </template>
 

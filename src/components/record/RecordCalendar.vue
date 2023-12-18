@@ -12,7 +12,7 @@
     <div class="days">
       <div v-for="day in days" :key="day" class="day">{{ day }}</div>
     </div>
-   
+
     <!-- 날짜 -->
     <div class="dates-wrap">
       <div class="dates">
@@ -22,10 +22,13 @@
           :key="weekIndex"
           class="week"
         >
-          <record-day 
+          <record-day
             v-for="(date, dateIndex) in week"
-            :date="date" 
+            :weekIndex="weekIndex"
+            :date="date"
             :dateIndex="dateIndex"
+            :nextMonthDate="nextMonthDate"
+            :week="week"
             :key="dateIndex"
             :currentDate="currentDate"
             :events="events"
@@ -49,6 +52,7 @@ export default {
     return {
       currentDate: new Date(),
       selectedDate: null,
+      nextMonthDate: 0,
       events:[],
       days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     };
@@ -58,12 +62,11 @@ export default {
   },
   computed: {
     formattedMonth() {
-      return this.currentDate.toLocaleString('default', { month: 'long' }) + ' ' + this.currentDate.getFullYear();
+      return this.currentDate.toLocaleString('default', { month: 'long' });
     },
     calendar() {
       const firstDayOfMonth = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
       const lastDayOfMonth = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0);
-
       const daysInMonth = lastDayOfMonth.getDate();
       const startDay = firstDayOfMonth.getDay();
 
@@ -83,10 +86,8 @@ export default {
         weeks[currentWeek].push(date);
       }
 
-      let nextMonthDate = 1;
       while (weeks[currentWeek].length < 7) {
-        weeks[currentWeek].push(new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, nextMonthDate));
-        nextMonthDate++;
+        weeks[currentWeek].push(null);
       }
 
       return weeks;
@@ -127,7 +128,7 @@ export default {
         this.selectedDate.getMonth() === date.getMonth() &&
         this.selectedDate.getFullYear() === date.getFullYear()
       );
-    }, 
+    },
   },
 };
 </script>
@@ -168,7 +169,7 @@ export default {
   width:100%;
   height: 100%;
 }
-.date { 
+.date {
   position:relative;
   flex: 0 0 calc(100% / 7);
   height: 100%;
