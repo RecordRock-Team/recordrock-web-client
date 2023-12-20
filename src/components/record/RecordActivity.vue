@@ -1,6 +1,6 @@
 <template>
   <div>
-    
+    <button type="button">수정</button><!-- 수정 클릭 시 수정 컴포넌트 보여 짐 -->
     <!-- 방문 장소 및 횟수 -->
     <div class="place">
       <strong>누적방문</strong>
