@@ -1,6 +1,6 @@
 <template>
   <div class="palette">
-    <button type="button" class="btn_color" v-for="color in colors" :key="color" @click="changeColor(Object.values(color)[0])">
+    <button type="button" class="btn_color" v-for="color in colors" :key="color" @click="SET_COLOR(Object.values(color)[0])">
       <span class="circle-color" :class="`${Object.values(color)[0]}`"></span><br>
       <span>{{Object.keys(color)[0]}}</span>
     </button>
@@ -9,6 +9,7 @@
 
 <script>
 import { mapMutations } from 'vuex';
+
 export default {
   props:{
     color: Object
@@ -24,63 +25,17 @@ export default {
   },
   methods:{
     ...mapMutations([
-      "changeColor"
+      "SET_COLOR"
     ])
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scope>
   .palette{
     width: 100%;
     button{
       text-align: center;
     }
   }
-  .circle-color{
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    border-radius: 50%;
-    border: 1px solid rgba(0,0,0,0.15);
-    &.brown{
-      background-color:#804040;
-    }
-    &.grey{
-      background-color:#c0c0c0;
-    }
-    &.violet{
-      background-color:#cb9bf2;
-    }
-    &.red{
-      background-color: #ef050c;
-    }
-    &.blue{
-      background-color: #287bf9;
-    }
-    &.green{
-      background-color: #229527;
-    }
-    &.orange{
-      background-color:#fd7800;
-    }
-    &.yellow{
-      background-color:#fff200;
-    }
-    &.sky{
-      background-color:#b0d8ff;
-    }
-    &.pink{
-      background-color:#ffcaeb;
-    }
-    &.navy{
-      background-color:#2027b7;
-    }
-    &.black{
-      background-color:#000000;
-    }
-    &.white{
-      background-color:#ffffff;
-    }
-  }
-</style>
+  </style>

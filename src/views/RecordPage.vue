@@ -18,7 +18,7 @@ export default {
   components:{
     RecordCalendar,
     RecordState,
-  }
+  },
 }
 </script>
 

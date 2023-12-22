@@ -25,16 +25,15 @@
           <record-day
             v-for="(date, dateIndex) in week"
             :weekIndex="weekIndex"
-            :date="date"
             :dateIndex="dateIndex"
-            :nextMonthDate="nextMonthDate"
-            :week="week"
-            :key="dateIndex"
+            :date="date"
             :currentDate="currentDate"
             :events="events"
+            :nextMonthDate="nextMonthDate"
+            :key="dateIndex"
             class="date"
             :class="{ today: isToday(date), selected: isSelected(date), 'other-month': !date }"
-            @click="selectDate(date)"
+            @click="SET_DATE(date)"
             >
           </record-day>
         </div>
@@ -46,12 +45,13 @@
 
 <script>
 import { ref, computed } from 'vue';
+import { useStore, mapMutations } from 'vuex';
 import RecordDay from '../record/RecordDay.vue';
 
 export default {
   setup(){
+    const store = useStore();
     const currentDate = ref(new Date());
-    const selectedDate= ref(null);
     const nextMonthDate = ref(0);
     const events = ref([]);
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -96,17 +96,6 @@ export default {
     const nextMonth = () => {
       currentDate.value = new Date(currentDate.value.getFullYear(), currentDate.value.getMonth() + 1, 1);
     };
-    const selectDate = (date) => {
-      selectedDate.value = date;
-      // 선택한 날짜에 대한 추가 작업 수행
-    };
-    // addEvent = () => {
-    //   if (selectedDate) {
-    //     events.push({
-    //       date: selectedDate,
-    //     });
-    //   }
-    // },
     const isToday = (date) => {
       const today = new Date();
       return (
@@ -118,28 +107,31 @@ export default {
     };
     const isSelected = (date) => {
       return (
-        selectedDate.value &&
+        store.state.selectedDate &&
         date &&
-        selectedDate.value.getDate() === date.getDate() &&
-        selectedDate.value.getMonth() === date.getMonth() &&
-        selectedDate.value.getFullYear() === date.getFullYear()
+        store.state.selectedDate.getDate() === date.getDate() &&
+        store.state.selectedDate.getMonth() === date.getMonth() &&
+        store.state.selectedDate.getFullYear() === date.getFullYear()
       );
     };
 
     return{
       currentDate,
-      selectedDate,
       nextMonthDate,
       events,
       days,
       prevMonth,
       nextMonth,
-      selectDate,
       isToday,
       isSelected,
       formattedMonth,
       calendar,
     }
+  },
+  methods:{
+    ...mapMutations([
+      "SET_DATE"
+    ])
   },
   components:{
     RecordDay,
@@ -203,5 +195,50 @@ export default {
 .today {
   background-color: #e0f7fa;
 }
-
+.circle-color{
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.15);
+    &.brown{
+      background-color:#804040;
+    }
+    &.grey{
+      background-color:#c0c0c0;
+    }
+    &.violet{
+      background-color:#cb9bf2;
+    }
+    &.red{
+      background-color: #ef050c;
+    }
+    &.blue{
+      background-color: #287bf9;
+    }
+    &.green{
+      background-color: #229527;
+    }
+    &.orange{
+      background-color:#fd7800;
+    }
+    &.yellow{
+      background-color:#fff200;
+    }
+    &.sky{
+      background-color:#b0d8ff;
+    }
+    &.pink{
+      background-color:#ffcaeb;
+    }
+    &.navy{
+      background-color:#2027b7;
+    }
+    &.black{
+      background-color:#000000;
+    }
+    &.white{
+      background-color:#ffffff;
+    }
+  }
 </style>
