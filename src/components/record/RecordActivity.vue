@@ -59,8 +59,7 @@
     <button type="button" @click="showModify()">수정</button>
      <!-- 방문 장소 및 횟수 -->
     <div class="place">
-      <strong v-if="!showDay"><span>누적</span>방문</strong>
-      <strong v-else><span>{{$store.state.selectedDate.getMonth()+1}}월 {{$store.state.selectedDate.getDate()}}일</span></strong>
+      <strong ><span>{{$store.state.selectedDate.getMonth()+1}}월 {{$store.state.selectedDate.getDate()}}일</span></strong>
       <div class="place-box" v-if="!showDay">
         <ul>
           <li>
@@ -201,7 +200,6 @@ export default {
 
     const showModify = () =>{
       showDay.value = true;
-      console.log(showDay,showPalette)
     };
     return{
       showPalette,
@@ -218,6 +216,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@/assets/scss/components/recordActivity.scss';
 
 </style>

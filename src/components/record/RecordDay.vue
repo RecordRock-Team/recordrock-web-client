@@ -45,13 +45,11 @@ export default {
       if (dateIndex < startDay && weekIndex === 0) {
         // 전월의 날짜
         return lastMonthDate;
-      } else if( dateIndex > lastDay && dateIndex < 7 ){
+      } else if( dateIndex > lastDay && dateIndex < 7 )
         // 다음월의 날짜
         return nextMonthDate;
       }
-    };
-
-    const hasEvent = (date) =>{
+      const hasEvent = (date) =>{
       // date 이벤트가 있는지 여부
       return props.events.some((event) => event.date.getTime() === date.getTime());
       // return false;
