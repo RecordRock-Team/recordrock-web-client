@@ -1,23 +1,23 @@
 <template>
-  <header>
-    <div>
+  <header class="header">
+    <div class="header-left">
       <router-link to="/login" class="logo">
         RR
       </router-link>
+      <div class="navigation">
+        <router-link to="/record">RECORD</router-link>
+        <router-link to="/community">COMMUNITY</router-link>
+      </div>
     </div>
-    <div class="navigation">
-      <router-link to="/record">RECORD</router-link>
-      <router-link to="/community">COMMUNITY</router-link>
-    </div>
-    <div>
-      <AppSearch></AppSearch>
+    <div class="header-right">
+      <app-search></app-search>
       <router-link to="/settings">settings</router-link>
     </div>
   </header>
 </template>
 
 <script>
-import AppSearch from './AppSearch.vue';
+import AppSearch from '@/components/common/AppSearch.vue';
 
 export default {
   name: 'AppHeader',

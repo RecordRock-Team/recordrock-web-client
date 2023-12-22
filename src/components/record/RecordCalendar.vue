@@ -28,8 +28,6 @@
             :dateIndex="dateIndex"
             :date="date"
             :currentDate="currentDate"
-            :events="events"
-            :nextMonthDate="nextMonthDate"
             :key="dateIndex"
             class="date"
             :class="{ today: isToday(date), selected: isSelected(date), 'other-month': !date }"
@@ -46,14 +44,12 @@
 <script>
 import { ref, computed } from 'vue';
 import { useStore, mapMutations } from 'vuex';
-import RecordDay from '../record/RecordDay.vue';
+import RecordDay from '@/components/record/RecordDay.vue';
 
 export default {
   setup(){
     const store = useStore();
     const currentDate = ref(new Date());
-    const nextMonthDate = ref(0);
-    const events = ref([]);
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
     const calendar = computed (() => {
@@ -89,7 +85,7 @@ export default {
       return currentDate.value.toLocaleString('default', { month: 'long' });
     });
 
-     const prevMonth = () => {
+    const prevMonth = () => {
       currentDate.value = new Date(currentDate.value.getFullYear(), currentDate.value.getMonth() - 1, 1);
     };
 
@@ -117,8 +113,6 @@ export default {
 
     return{
       currentDate,
-      nextMonthDate,
-      events,
       days,
       prevMonth,
       nextMonth,
@@ -143,21 +137,12 @@ export default {
 .calendar {
   font-family: 'Arial', sans-serif;
 }
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
 .dates-wrap{
   position: relative;
   width:100%;
   padding-top: 100%;
   height:0;
 }
-
 .week {
   display: flex;
   width: 100%;
@@ -175,6 +160,7 @@ export default {
   width:100%;
   height: 100%;
 }
+
 .date {
   position:relative;
   flex: 0 0 calc(100% / 7);
@@ -183,62 +169,20 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #c8c8c8;
-  cursor: pointer;
+  border-radius: 10px;
+  border: 1px solid #E9E9E9;
+  background: #FFF;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 .other-month {
+  pointer-events: none;
+  color: var(--inp-placeholder);
   cursor: default;
-  color: #aaa; /* 다른 달의 날짜는 회색으로 스타일링 */
 }
+
 .today {
   background-color: #e0f7fa;
 }
-.circle-color{
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    border-radius: 50%;
-    border: 1px solid rgba(0,0,0,0.15);
-    &.brown{
-      background-color:#804040;
-    }
-    &.grey{
-      background-color:#c0c0c0;
-    }
-    &.violet{
-      background-color:#cb9bf2;
-    }
-    &.red{
-      background-color: #ef050c;
-    }
-    &.blue{
-      background-color: #287bf9;
-    }
-    &.green{
-      background-color: #229527;
-    }
-    &.orange{
-      background-color:#fd7800;
-    }
-    &.yellow{
-      background-color:#fff200;
-    }
-    &.sky{
-      background-color:#b0d8ff;
-    }
-    &.pink{
-      background-color:#ffcaeb;
-    }
-    &.navy{
-      background-color:#2027b7;
-    }
-    &.black{
-      background-color:#000000;
-    }
-    &.white{
-      background-color:#ffffff;
-    }
-  }
 </style>

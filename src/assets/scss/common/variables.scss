@@ -1,21 +1,18 @@
 :root {
   --white: #fff;
-  --grey-e: #eee;
-  --grey-de: #dedede;
-  --grey-9: #999;
-  --grey-6: #666;
-  --grey-4: #444;
-  --black: #272727;
-  --blue: #1B73D4;
+  --black: #333;
+  --grey: #f5f5f5;
+  --grey-stroke: #eee;
+  --inp-placeholder: #a1a1a1;
+  --highlight: #e6ffbf;
+  --container-bg: #ebebeb;
 }
 
 // break point
 $max: 1920;
 $pc: 1160;
 $tablet: 1024;
-$mobile: 750;
-$mJinhak: 720;
+$mobile: 767;
 
-// desigin file size
-$tabletDesign: 768;
-$mobileDesign: 375;
+$montserrat: 'Montserrat', sans-serif;
+$noto: 'Noto Sans KR','apple gothic','맑은 고딕',sans-serif;

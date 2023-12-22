@@ -1,14 +1,17 @@
 <template>
-  <li>
-    <span class="grade">{{  }}</span>
-    <span class="count">{{  }}</span>
+  <li v-for="(rock,index) in rocks" :key="index">
+    <span class="grade" :class="`${Object.keys(rock)[0]}`"></span>
+    <span class="count">{{ Object.values(rock)[0] }}</span>
+
   </li>
 </template>
 
 <script>
 
 export default {
-  name:'RockCount'
+  props:{
+    rocks: Object
+  },
 }
 </script>
 
