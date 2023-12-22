@@ -4,6 +4,7 @@
       {{ date ? date.getDate() : calculateOtherMonthDate(dateIndex,weekIndex) }}
       <div v-if="hasEvent(date)" class="event-dot"></div>
     </span>
+
     <div class="record">
       <div class="logo-box">
         <div class="img-logo"></div>

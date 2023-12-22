@@ -5,14 +5,14 @@
     </div>
     <div class="activity">
       <record-activity></record-activity>
-      <record-activity-modify></record-activity-modify>
+      <!-- <record-activity-modify></record-activity-modify> -->
     </div>
   </div>
 </template>
 
 <script>
 import RecordActivity from './RecordActivity.vue';
-import RecordActivityModify from './RecordActivityModify.vue';
+// import RecordActivityModify from './RecordActivityModify.vue';
 export default {
   data() {
     return {
@@ -21,7 +21,7 @@ export default {
   },
   components:{
     RecordActivity,
-    RecordActivityModify
+    // RecordActivityModify
   },
   mounted() {
   }
