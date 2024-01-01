@@ -1,8 +1,7 @@
 <template>
-  <li v-for="(rock,index) in rocks" :key="index">
-    <span class="grade" :class="`${Object.keys(rock)[0]}`"></span>
+  <li>
+    <span class="grade-circle" :class="`${ Object.keys(rock)[0] }`"></span> 
     <span class="count">{{ Object.values(rock)[0] }}</span>
-
   </li>
 </template>
 
@@ -10,13 +9,23 @@
 
 export default {
   props:{
-    rocks: Object
+    rock: Object
   },
 }
 </script>
 
-<style>
-  ul{
-    list-style: none;
+<style lang="scss" scope>
+.rock-count{
+  li{
+    flex: 0 0 50%;
+    text-align:center;
+    line-height: 1.4;
+    // font-size: 0.875rem;
+    span{
+      vertical-align: middle;
+      margin: 0 0.25em; 
+    }
   }
+}
+
 </style>

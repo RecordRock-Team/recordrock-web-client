@@ -136,7 +136,7 @@
           <div>
             <span class="grade">
               <button type="button" @click="openPalette">
-                <span class="circle-color" :class="$store.state.color"></span>
+                <span class="grade-circle" :class="$store.state.color"></span>
               </button>
             </span>
             <div v-if="showPalette">

@@ -1,7 +1,7 @@
 <template>
   <div class="record-page">
     <div class="record-calendar">
-      <div>record</div>
+      <h2 class="page-title">RECORD</h2>
       <record-calendar></record-calendar>
     </div>
     <div class="record-state">
@@ -22,6 +22,15 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss">
+  .record-page{
+    @include flex-box(flex-start,flex-start);
+    padding: 5.9% 2.85%;
+  }
+  .record-calendar{
+    flex:  0 1 73%;
+  }
+  .record-state{
+    flex: 1 0 23%;
+  }
 </style>

@@ -3,7 +3,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
 
 // RESET
-
 * {
   box-sizing: border-box;
 }
@@ -16,7 +15,6 @@ html {
 
 body {
   margin: 0;
-  font-size: 16px;
   line-height: 1.44;
   font-family: "Noto Sans KR", malgun Gothic, "맑은 고딕", Dotum, "돋움", sans-serif;
   color: var(--black);
@@ -33,10 +31,7 @@ fieldset,figure,figcaption,
 th,td,form {
   margin: 0;
   padding: 0;
-  color: inherit;
-  font-size: inherit;
   letter-spacing: -0.04em;
-  font-family: inherit;
 }
 
 table {
@@ -208,7 +203,7 @@ caption {
   cursor: pointer;
 }
 
-/* custom variables */
+/* custom variables 
 :root {
   --scroll-width: 8px;
   --full-width: calc(100vw - var(--scroll-width));
@@ -229,3 +224,4 @@ caption {
   --header-bg-color: var(--color-white);
   --header-blur-color: rgba(255, 255, 255, 0.5);
 }
+*/

@@ -12,7 +12,7 @@
       </div>
       <div class="rock-count">
         <ul>
-          <rock-count :rocks="rocks"></rock-count>
+          <rock-count v-for="(rock,index) in rocks" :key="index" :rock="rock"></rock-count>
         </ul>
       </div>
     </div>
@@ -72,12 +72,15 @@ export default {
 <style lang="scss">
 .num{
   position:absolute;
-  top:1.5rem;
-  left:2rem;
+  top:0.5rem;
+  left:0.5rem;
   font-size: 1rem;
+  width: 2rem;
+  text-align: center;
   z-index: 5;
 }
 .record{
+  --cont-p: 4.762%;
   position: relative;
   width: 100%;
   height: 100%;
@@ -95,7 +98,7 @@ export default {
   }
   .logo-box{
     height: 55.55%;
-    margin: 4.762%;
+    margin: var(--cont-p);
   }
   .img-logo{
     height: 100%;
@@ -110,6 +113,14 @@ export default {
   }
   .rock-count{
     position: relative;
+    margin: 0 var(--cont-p);
+    padding-bottom: var(--cont-p);
+    ul{
+      @include flex-box(center,center);
+      flex-wrap: wrap;
+      width: 80%;
+      margin: 0 auto;
+    }
   }
 }
 .selected.date {

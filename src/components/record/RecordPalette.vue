@@ -1,7 +1,7 @@
 <template>
   <div class="palette">
     <button type="button" class="btn_color" v-for="color in colors" :key="color" @click="SET_COLOR(Object.values(color)[0])">
-      <span class="circle-color" :class="`${Object.values(color)[0]}`"></span><br>
+      <span class="grade-circle" :class="`${Object.values(color)[0]}`"></span><br>
       <span>{{Object.keys(color)[0]}}</span>
     </button>
   </div>

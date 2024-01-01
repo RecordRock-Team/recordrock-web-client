@@ -82,7 +82,7 @@ export default {
     });
 
     const formattedMonth = computed (() => {
-      return currentDate.value.toLocaleString('default', { month: 'long' });
+      return currentDate.value.toLocaleString('default', { month: 'numeric' });
     });
 
     const prevMonth = () => {
@@ -136,6 +136,7 @@ export default {
 <style lang="scss">
 .calendar {
   font-family: 'Arial', sans-serif;
+  overflow-y: auto;
 }
 .dates-wrap{
   position: relative;

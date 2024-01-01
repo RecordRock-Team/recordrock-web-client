@@ -1,23 +1,32 @@
 @import 'variables.scss';
 
+/* mixin */
+@mixin flex-box($j:flex-start,$a:center){
+  display: flex;
+  justify-content: $j;
+  align-items: $a;
+}
+
 html{
-  font-size: 0.8333vw;
+  // font-size: 0.8333vw;
+  font-size: 1.1111vw;
 }
 .app{
+
+  --cont-space: 7.291vw;
   background-color: #000;
 }
+
 .app-contents{
-  margin: 0 7.291%;
+  margin: 0 var(--cont-space); 
   background-color: var(--container-bg);
 }
 
 .header{
   position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flex-box(space-between,center);
   width: 100%;
-  padding: 0 7.291%;
+  padding: 0 var(--cont-space);
   .logo{
     font-size: 1.125rem;
   }
@@ -26,7 +35,7 @@ html{
 .navigation{
   display: flex;
   padding: 3.88em 0;
-  color:#fff;
+  color: #fff;
   font-family: $montserrat;
   font-size: 1.125rem;
   a{
@@ -34,11 +43,10 @@ html{
   }
 }
 
-
-.circle-color {
+.grade-circle {
   display: inline-block;
-  width: 1em;
-  height: 1em;
+  width: 0.857em;
+  height: 0.857em;
   border-radius: 50%;
   border: 1px solid rgba(0, 0, 0, 0.15);
 
@@ -93,4 +101,9 @@ html{
   &.white {
     background-color: #ffffff;
   }
+}
+
+.page-title{
+  font-family: 'Montserrat', sans-serif;
+  width: 3.5rem;
 }

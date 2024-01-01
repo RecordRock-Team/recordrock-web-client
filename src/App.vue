@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import AppHeader from './components/common/AppHeader.vue';
+import AppHeader from '@/components/common/AppHeader.vue';
 
 export default {
   name: 'App',
@@ -19,4 +19,8 @@ export default {
 </script>
 
 <style>
+  .app-contents{
+    border-radius:  1.25rem;
+    height: 880px;
+  }
 </style>
