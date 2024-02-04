@@ -2,7 +2,7 @@
   <header class="header">
     <div class="header-left">
       <router-link to="/login" class="logo">
-        RR
+        RECORD<br>ROCK
       </router-link>
       <div class="navigation">
         <router-link to="/record">RECORD</router-link>
@@ -11,7 +11,7 @@
     </div>
     <div class="header-right">
       <app-search></app-search>
-      <router-link to="/settings">settings</router-link>
+      <router-link to="/settings" class="btn-settings"><span>설정</span></router-link>
     </div>
   </header>
 </template>

@@ -1,19 +1,13 @@
 <template>
-  <div class="record-state">
-    <div class="profile">
-
-    </div>
-    <div class="profile">
-
-    </div>
-    <div class="activity">
-      <record-activity></record-activity>
-    </div>
+  <div class="state">
+    <user-profile></user-profile>
+    <record-activity></record-activity>
   </div>
 </template>
 
 <script>
-import RecordActivity from './RecordActivity.vue';
+import UserProfile from '@/components/common/UserProfile.vue';
+import RecordActivity from '@/components/record/RecordActivity.vue';
 export default {
   data() {
     return {
@@ -22,11 +16,13 @@ export default {
   },
   components:{
     RecordActivity,
+    UserProfile,
   },
   mounted() {
   }
 }
 </script>
 
-<style>
+<style lang="scss">
+
 </style>

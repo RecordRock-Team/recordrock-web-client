@@ -1,0 +1,46 @@
+/* mixin */
+@mixin flex-box($j:flex-start,$a:flex-start){
+  display: flex;
+  justify-content: $j;
+  align-items: $a;
+}
+@mixin blind{
+  position:absolute;
+  left: 0;
+  right:0;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  clip: rect(0 0 0 0);
+}
+@mixin radius-box($color:color){
+  border-radius: 0.75em;
+  @if($color == white){
+    background-color: #fff;
+  }
+}
+@mixin radius-in-box(){
+  border-radius: 0.75em;
+  background-color: var(--box-fill);
+  border: 1px solid var(--box-stroke);
+}
+@mixin mobile{
+  @media (max-width: $mobileSize) {
+    @content;
+  }
+}
+@mixin tablet{
+  @media (max-width: $tabletSize) {
+    @content;
+  }
+}
+@mixin pcMin{
+  @media (max-width: $pcSizeM) {
+    @content;
+  }
+}
+@mixin pc{
+  @media (max-width: $pcSize) {
+    @content;
+  }
+}

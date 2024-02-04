@@ -73,6 +73,7 @@ input,textarea,button,select {
   -webkit-appearance: none;
   appearance: none;
   border-radius: 0;
+  font-size: 1rem;
   border: 1px solid transparent;
 }
 
@@ -101,10 +102,6 @@ a {
 
 label {
   font-size: inherit;
-}
-
-button span:first-child {
-  position: relative;
 }
 
 input::-ms-clear,
@@ -202,26 +199,3 @@ caption {
 .cursor {
   cursor: pointer;
 }
-
-/* custom variables 
-:root {
-  --scroll-width: 8px;
-  --full-width: calc(100vw - var(--scroll-width));
-  --max-width: 1920px;
-  --full-height: 100vh;
-  --full-calc-height: calc(var(--vh, 1vh) * 100);
-  --color-white: #fff;
-  --color-black: #000;
-  --color-grey-1: #f4f4f5;
-  --color-grey-2: #e1e1e4;
-  --color-grey-3: #cecece;
-  --color-grey-4: #909090;
-  --color-grey-5: #555;
-  --color-grey-6: #121417;
-  --bg-blue-1: #eefaff;
-  --header-height: 64px;
-  --header-color: var(--color-black);
-  --header-bg-color: var(--color-white);
-  --header-blur-color: rgba(255, 255, 255, 0.5);
-}
-*/

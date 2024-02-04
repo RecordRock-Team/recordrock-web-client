@@ -1,0 +1,20 @@
+[
+  {
+    "center_fullname": "더클라임 사당점", 
+    "clear_record": [ {"blue":3}, {"navy":7} ],
+    "daily_memo": "행클했다",
+    "day": 22,
+    "workout_time_hour": 4,
+    "workout_time_minute": 5,
+    "img_url":"https://nodejs.org/static/images/logo.svg"
+  },
+  {
+    "center_fullname": "더클라임 종로점", 
+    "clear_record": [ {"blue":3}, {"violet":7} ],
+    "daily_memo": "빵클했다",
+    "day": 23,
+    "workout_time_hour": 3,
+    "workout_time_minute": 25,
+    "img_url":"https://nodejs.org/static/images/logo.svg"
+  }
+]

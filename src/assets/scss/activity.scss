@@ -1,0 +1,65 @@
+.activity{
+  @include radius-box(white);
+  position: relative;
+  margin-top: 2.25rem;
+  & > div{
+    margin-top: 1em;
+  }
+  & > div > div{
+    margin-top: 1em;
+    padding: 1.75em 1.25em;
+    @include radius-in-box;
+  }
+}
+
+
+.state{
+  strong{
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+  .place-box{   
+    li{
+      @include flex-box(space-between,center);
+      .place{
+        @include flex-box(flex-start,center);
+        gap: 1rem;
+
+      }
+    }
+  }
+  .time-box{
+    @include flex-box(space-between,center);
+    .time-unit{
+      @include flex-box(space-between,center);
+      flex-wrap: wrap;
+      span{
+        display: inline-block;
+        text-align: right;
+        width: 6.25em;
+        padding-right: 0.5em;
+      }
+    }
+  }
+  .grade-box{
+    ul{
+      @include flex-box(space-between,center);
+      flex-wrap: wrap;
+      li{
+        flex-basis: 0;
+        white-space: nowrap;
+        max-width: 33.3%;
+      }
+    }
+    .record-count{
+      @include flex-box(flex-start,center);
+    } 
+    .count{
+      margin-left: 0.5em;
+      margin-right: auto;
+      input[type="number"]{
+        width: 4em;
+      }
+    }
+  }
+}

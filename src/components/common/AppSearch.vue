@@ -1,7 +1,7 @@
 <template>
-  <div class="search_box">
+  <div class="search-box">
     <input type="search">
-    <button type="submit">검색</button>
+    <button type="button"><span>검색</span></button>
   </div>
 </template>
 

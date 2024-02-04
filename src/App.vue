@@ -20,7 +20,6 @@ export default {
 
 <style>
   .app-contents{
-    border-radius:  1.25rem;
-    height: 880px;
+    max-width: 1600px;
   }
 </style>

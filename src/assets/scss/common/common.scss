@@ -1,48 +1,86 @@
-@import 'variables.scss';
+@import 'reset';
+@import 'variables';
+@import 'mixin';
+@import 'layout';
 
-/* mixin */
-@mixin flex-box($j:flex-start,$a:center){
-  display: flex;
-  justify-content: $j;
-  align-items: $a;
+input[type="text"],input[type="number"],input[type="search"],input[type="password"],button{
+  max-width: 100%;
+  padding: 0.5em 1em;
+  font-size: 1rem;
+  border-radius: 0.4rem;
+  &:focus{
+    background-color: var(--white);
+  }
 }
 
 html{
-  // font-size: 0.8333vw;
-  font-size: 1.1111vw;
-}
-.app{
-
-  --cont-space: 7.291vw;
-  background-color: #000;
-}
-
-.app-contents{
-  margin: 0 var(--cont-space); 
-  background-color: var(--container-bg);
+  font-size: 0.8333vw;
+  @include pc(){
+    font-size: 1vw;
+  }
+  @include tablet(){
+    font-size: 1.33vw;
+  }
+  @include mobile(){
+    font-size: 3.65vw;
+  }
 }
 
-.header{
-  position: relative;
-  @include flex-box(space-between,center);
+
+.search-box{
+  position:relative;
+  font-size: 1rem;
+  input[type="search"]{
+    width: 100%;
+    padding: .5em 2.5em .5em 1em;
+    line-height: 1.44;
+  }
+  button{
+    position: absolute;
+    right: .4rem;
+    top: .3rem;
+    width: 1.94rem;
+    height: 1.94rem;
+    padding:0;
+    &::before{
+      content:'';
+      display: block;
+      width: 100%;
+      height: 100%;
+      background:url(/images/icon_search.svg) center/80% no-repeat; 
+    }
+    span{
+      @include blind;
+    }
+  }
+}
+
+.search-list{
+  display: none;
   width: 100%;
-  padding: 0 var(--cont-space);
-  .logo{
-    font-size: 1.125rem;
+  line-height: 1.44;
+  background-color: var(--white);
+  li{
+    a{
+      display: block;
+      padding: 0.5em 0.5em 0.5em 1em;
+    }
   }
 }
 
-.navigation{
-  display: flex;
-  padding: 3.88em 0;
-  color: #fff;
-  font-family: $montserrat;
-  font-size: 1.125rem;
-  a{
-    margin-left: 3.88em;
-  }
+textarea{
+  width: 100%;
 }
-
+.btn-save{
+  width: 100%;
+  background-color: var(--black);
+  color: var(--white);
+  padding: 1em;
+  margin-top: 1rem;
+}
+.grade-choose{
+  position:absolute;
+}
 .grade-circle {
   display: inline-block;
   width: 0.857em;
@@ -104,6 +142,32 @@ html{
 }
 
 .page-title{
+  margin: 0.5em 0;
+  text-align: center;
   font-family: 'Montserrat', sans-serif;
-  width: 3.5rem;
+  font-size: 7.5rem;
+  line-height: 1em;
+  @include mobile(){
+    font-size: 3rem;
+  }
+}
+
+.btn-edit{
+  position: absolute;
+  top: 0.25rem;
+  right: 0;
+  margin-left: 0.5rem;
+  width: 2.44rem;
+  height: 2.44rem;
+  padding:0;
+  &::before{
+    content:'';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background:url(/images/icon_edit.svg) center/100% no-repeat; 
+  }
+  span{
+    @include blind;
+  }
 }

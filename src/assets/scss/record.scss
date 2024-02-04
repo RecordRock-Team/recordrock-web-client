@@ -1,0 +1,96 @@
+.record-page{
+
+  @include flex-box(space-between,stretch);
+  --v-padding: 2.25rem;
+  --h-padding: 1.5625rem;
+  --cont-radius: 1.25rem;
+  @include mobile(){
+    --v-padding: 1rem;
+    --h-padding: 1rem;
+  }
+  
+  max-width: 1600px;
+  margin: 0 var(--layout-gap);
+  @include tablet(){
+    flex-direction: column-reverse;
+  }
+    .record-calendar{
+      @include tablet(){
+        flex-basis: 100%;
+      }
+    }
+
+    .record-state{
+      @include tablet(){
+        margin-top: var(--layout-gap);
+        flex-basis: 100%;
+        max-width: 100%;
+      }
+      .state{
+        @include tablet(){
+          @include flex-box(center,center);
+        }
+        @include mobile(){
+          display: block;
+        }
+        & > div{
+          @include tablet(){
+            flex-basis: 50%;
+          }
+        } 
+        .user{
+          @include tablet(){
+            display: block;
+            text-align: center;
+          }
+          @include mobile(){
+            @include flex-box(flex-start,flex-end);
+         }
+          &-pic{
+            @include tablet(){
+              width: 50%;
+              margin: auto auto 1rem;
+            }
+            @include mobile(){
+              width: 30%;
+              margin: 0;
+            }
+          }
+          img{
+            @include tablet(){
+              width: 100%;
+            }
+          }
+          &-info{
+            @include tablet(){
+            margin-left:0;  
+            }
+          }
+        }  
+        .activity{
+          @include tablet(){
+          margin-top: 0;
+        }     
+      }
+    }
+  }
+}
+.record-calendar,.record-state{
+  background-color: var(--white);
+  border-radius: var(--cont-radius);
+  box-shadow: 0.2em 0.2em 0.5em rgba(0,0,0,0.1);
+  
+}
+.record-calendar{
+  flex:  0 0 75%;
+  padding: 3.62rem var(--h-padding) var(--v-padding);
+  @include mobile(){
+    padding: var(--v-padding) var(--h-padding);
+  }
+}
+
+.record-state{
+  flex: 0 0 22.8125%;
+  max-width: 22.8125%;
+  padding: var(--v-padding) var(--h-padding);
+}

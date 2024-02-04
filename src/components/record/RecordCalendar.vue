@@ -2,10 +2,10 @@
   <div class="calendar">
 
     <!-- 월 -->
-    <div class="header">
-      <button @click="prevMonth">&lt;</button>
+    <div class="month">
+      <button @click="prevMonth" class="btn-prev-month"></button>
       <span>{{ formattedMonth }}</span>
-      <button @click="nextMonth">&gt;</button>
+      <button @click="nextMonth" class="btn-next-month"></button>
     </div>
 
     <!-- 요일 -->
@@ -22,18 +22,20 @@
           :key="weekIndex"
           class="week"
         >
-          <record-day
+          <record-date
             v-for="(date, dateIndex) in week"
             :weekIndex="weekIndex"
             :dateIndex="dateIndex"
             :date="date"
             :currentDate="currentDate"
             :key="dateIndex"
-            class="date"
             :class="{ today: isToday(date), selected: isSelected(date), 'other-month': !date }"
-            @click="SET_DATE(date)"
+            :hasData="hasData(date)"
+            @click="SET_DATE(date)" 
+            class="date"
             >
-          </record-day>
+          </record-date>
+          <!--:hasData="$store.state.calendarInfo.some(el=>el.day === date.getDate())"-->
         </div>
         <!--// week -->
       </div>
@@ -44,14 +46,15 @@
 <script>
 import { ref, computed } from 'vue';
 import { useStore, mapMutations } from 'vuex';
-import RecordDay from '@/components/record/RecordDay.vue';
+import RecordDate from '@/components/record/RecordDate.vue';
+
 
 export default {
   setup(){
     const store = useStore();
     const currentDate = ref(new Date());
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-
+    
     const calendar = computed (() => {
       const firstDayOfMonth = new Date(currentDate.value.getFullYear(), currentDate.value.getMonth(), 1);
       const lastDayOfMonth = new Date(currentDate.value.getFullYear(), currentDate.value.getMonth() + 1, 0);
@@ -60,7 +63,6 @@ export default {
 
       const weeks = [[]];
       let currentWeek = 0;
-
       for (let i = 0; i < startDay; i++) {
         weeks[currentWeek].push(null);
       }
@@ -77,12 +79,11 @@ export default {
       while (weeks[currentWeek].length < 7) {
         weeks[currentWeek].push(null);
       }
-
       return weeks;
     });
 
     const formattedMonth = computed (() => {
-      return currentDate.value.toLocaleString('default', { month: 'numeric' });
+      return currentDate.value.getMonth() + 1;
     });
 
     const prevMonth = () => {
@@ -92,6 +93,7 @@ export default {
     const nextMonth = () => {
       currentDate.value = new Date(currentDate.value.getFullYear(), currentDate.value.getMonth() + 1, 1);
     };
+
     const isToday = (date) => {
       const today = new Date();
       return (
@@ -100,6 +102,20 @@ export default {
         date.getMonth() === today.getMonth() &&
         date.getFullYear() === today.getFullYear()
       );
+    };
+
+    const hasData = (date) =>{
+      let matchDate =  date && date.getDate();
+      return (store.state.calendarInfo.filter(el=>el.day === matchDate)[0]);
+    };
+
+    const parseDateString = (dateString) => {
+      const parts = dateString.split('-');
+      const year = parseInt(parts[0], 10);
+      const month = parseInt(parts[1], 10) - 1; // 월은 0부터 시작하므로 1을 빼줍니다.
+      const day = parseInt(parts[2], 10);
+
+      return new Date(year, month, day);
     };
     const isSelected = (date) => {
       return (
@@ -110,80 +126,33 @@ export default {
         store.state.selectedDate.getFullYear() === date.getFullYear()
       );
     };
-
     return{
+      calendar,
       currentDate,
       days,
       prevMonth,
       nextMonth,
       isToday,
       isSelected,
+      hasData,
       formattedMonth,
-      calendar,
+      parseDateString
     }
   },
   methods:{
     ...mapMutations([
-      "SET_DATE"
-    ])
+        "SET_DATE",
+        // "SET_MONTHDATA"
+    ]),
   },
   components:{
-    RecordDay,
+    RecordDate,
+  },
+  mounted(){
+    this.$store.dispatch('fetchMonth');
   },
 };
 </script>
-
-<style lang="scss">
-.calendar {
-  font-family: 'Arial', sans-serif;
-  overflow-y: auto;
-}
-.dates-wrap{
-  position: relative;
-  width:100%;
-  padding-top: 100%;
-  height:0;
-}
-.week {
-  display: flex;
-  width: 100%;
-  height:calc(100% / 7);
-}
-.days {
-  display: flex;
-  justify-content: space-between;
-  font-weight: bold;
-}
-.dates{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height: 100%;
-}
-
-.date {
-  position:relative;
-  flex: 0 0 calc(100% / 7);
-  height: 100%;
-  padding: 1%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  border: 1px solid #E9E9E9;
-  background: #FFF;
-  box-sizing: border-box;
-  cursor: pointer;
-}
-
-.other-month {
-  pointer-events: none;
-  color: var(--inp-placeholder);
-  cursor: default;
-}
-
-.today {
-  background-color: #e0f7fa;
-}
+<style lang="scss"> 
+@import '@/assets/scss/calendar.scss';
 </style>
